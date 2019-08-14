@@ -25,13 +25,13 @@ def verify_detached_signature(document, signature, certificate):
         pkcs7 = "-----BEGIN PKCS7-----\n{}-----END PKCS7-----".format(signature)
 
         # Load the string into a bio
-        bio = backend._bytes_to_bio(pkcs7)
+        bio = backend._bytes_to_bio(pkcs7.encode())
 
         # Create the pkcs7 object
         p7 = lib.PEM_read_bio_PKCS7(bio.bio, ffi.NULL, ffi.NULL, ffi.NULL)
 
         # Load the specified certificate
-        other_cert = backend.load_pem_x509_certificate(certificate)
+        other_cert = backend.load_pem_x509_certificate(certificate.encode())
         stack = lib.sk_X509_new_null()
         lib.sk_X509_push(stack, other_cert._x509)
 
