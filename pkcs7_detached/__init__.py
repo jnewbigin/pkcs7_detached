@@ -1,10 +1,9 @@
-name = "pkcs7"
 # vim: set tabstop=4 shiftwidth=4 expandtab:
+
+import logging
 
 from cryptography.hazmat.backends.openssl.backend import backend
 from cryptography.hazmat.bindings._openssl import ffi, lib
-import logging
-
 
 """
 Use the Cryprography hazmat backend (OpenSSL binding) to verify
@@ -15,14 +14,33 @@ Base on the steps in https://github.com/openssl/openssl/blob/master/apps/smime.c
 certificate is a PEM formated X509 certificate
 
 """
+
+
 def verify_detached_signature(document, signature, certificate):
     logger = logging.getLogger(__name__)
 
-    logger.debug("verify_detached_signature('{}', '{}', '{}')".format(document, signature, certificate))
+    logger.debug(
+        "verify_detached_signature('{}', '{}', '{}')".format(
+            document, signature, certificate
+        )
+    )
 
     try:
         # Format the signature into PKCS7 PEM format
-        pkcs7 = "-----BEGIN PKCS7-----\n{}-----END PKCS7-----".format(signature)
+        pkcs7 = signature.split("\n")
+
+        # Remove blank training lines
+        while pkcs7[-1] == "":
+            pkcs7.pop()
+
+        # Add armour if missing
+        if not pkcs7[0] == "-----BEGIN PKCS7-----":
+            pkcs7.insert(0, "-----BEGIN PKCS7-----")
+            pkcs7.append("-----END PKCS7-----")
+
+        pkcs7 = "\n".join(pkcs7)
+
+        logger.debug(pkcs7)
 
         # Load the string into a bio
         bio = backend._bytes_to_bio(pkcs7.encode())
@@ -39,7 +57,7 @@ def verify_detached_signature(document, signature, certificate):
         store = lib.X509_STORE_new()
 
         # Load the document into a bio
-        content = backend._bytes_to_bio(document.encode('utf-8'))
+        content = backend._bytes_to_bio(document.encode("utf-8"))
 
         # Flags
         flags = lib.PKCS7_NOVERIFY
@@ -48,7 +66,6 @@ def verify_detached_signature(document, signature, certificate):
         if lib.PKCS7_verify(p7, stack, store, content.bio, ffi.NULL, flags) == 1:
             return True
     except Exception as e:
-        logger.info("verify_detached_signature exception={}".format(e.message))
+        logger.error("verify_detached_signature exception={}".format(str(e)))
         return False
     return False
-

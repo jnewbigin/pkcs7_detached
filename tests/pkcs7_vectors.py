@@ -104,3 +104,37 @@ SAMPLE_INVALID_AWS_CERT="""
 6iS1rQoNanN8oEcT2j4b48rmCmnDhRoBcFHwCYs/3w
 """
 
+SAMPLE2_VALID_IDENTITY_DOC = """{
+  "accountId" : "599768876055",
+  "architecture" : "x86_64",
+  "availabilityZone" : "ap-southeast-2a",
+  "billingProducts" : null,
+  "devpayProductCodes" : null,
+  "marketplaceProductCodes" : null,
+  "imageId" : "ami-02f39bcb528d0f977",
+  "instanceId" : "i-09f9d2ddec663467f",
+  "instanceType" : "t3.medium",
+  "kernelId" : null,
+  "pendingTime" : "2020-02-27T22:10:50Z",
+  "privateIp" : "10.49.105.110",
+  "ramdiskId" : null,
+  "region" : "ap-southeast-2",
+  "version" : "2017-09-30"
+}"""
+
+SAMPLE2_VALID_IDENTITY_SIGNATURE = """MIAGCSqGSIb3DQEHAqCAMIACAQExCzAJBgUrDgMCGgUAMIAGCSqGSIb3DQEHAaCAJIAEggHoewog
+ICJhY2NvdW50SWQiIDogIjU5OTc2ODg3NjA1NSIsCiAgImFyY2hpdGVjdHVyZSIgOiAieDg2XzY0
+IiwKICAiYXZhaWxhYmlsaXR5Wm9uZSIgOiAiYXAtc291dGhlYXN0LTJhIiwKICAiYmlsbGluZ1By
+b2R1Y3RzIiA6IG51bGwsCiAgImRldnBheVByb2R1Y3RDb2RlcyIgOiBudWxsLAogICJtYXJrZXRw
+bGFjZVByb2R1Y3RDb2RlcyIgOiBudWxsLAogICJpbWFnZUlkIiA6ICJhbWktMDJmMzliY2I1Mjhk
+MGY5NzciLAogICJpbnN0YW5jZUlkIiA6ICJpLTA5ZjlkMmRkZWM2NjM0NjdmIiwKICAiaW5zdGFu
+Y2VUeXBlIiA6ICJ0My5tZWRpdW0iLAogICJrZXJuZWxJZCIgOiBudWxsLAogICJwZW5kaW5nVGlt
+ZSIgOiAiMjAyMC0wMi0yN1QyMjoxMDo1MFoiLAogICJwcml2YXRlSXAiIDogIjEwLjQ5LjEwNS4x
+MTAiLAogICJyYW1kaXNrSWQiIDogbnVsbCwKICAicmVnaW9uIiA6ICJhcC1zb3V0aGVhc3QtMiIs
+CiAgInZlcnNpb24iIDogIjIwMTctMDktMzAiCn0AAAAAAAAxggEXMIIBEwIBATBpMFwxCzAJBgNV
+BAYTAlVTMRkwFwYDVQQIExBXYXNoaW5ndG9uIFN0YXRlMRAwDgYDVQQHEwdTZWF0dGxlMSAwHgYD
+VQQKExdBbWF6b24gV2ViIFNlcnZpY2VzIExMQwIJAJa6SNnlXhpnMAkGBSsOAwIaBQCgXTAYBgkq
+hkiG9w0BCQMxCwYJKoZIhvcNAQcBMBwGCSqGSIb3DQEJBTEPFw0yMDAyMjcyMjEwNTZaMCMGCSqG
+SIb3DQEJBDEWBBRtiv22lL82RLoP+0vrCmJkq++fHDAJBgcqhkjOOAQDBC4wLAIUEdq2mp8jOQvE
+lXfOLQPnokKMqFwCFEpBHBzgulCo4pyKiBIJgYr3/KgqAAAAAAAA
+"""
