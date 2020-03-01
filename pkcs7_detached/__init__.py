@@ -12,7 +12,6 @@ a detached PKCS7 signarure.
 Base on the steps in https://github.com/openssl/openssl/blob/master/apps/smime.c
 
 certificate is a PEM formated X509 certificate
-
 """
 
 
