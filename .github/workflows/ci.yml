@@ -33,6 +33,7 @@ jobs:
         .
 
   cd:
+    needs: ci
     name: CD to to PyPI and TestPyPI
     runs-on: ubuntu-18.04
     steps:
