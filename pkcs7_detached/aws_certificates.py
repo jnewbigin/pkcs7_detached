@@ -1,4 +1,7 @@
-# As per https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-identity-documents.html
+"""
+Known certificates
+As per https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-identity-documents.html
+"""
 
 PUBLIC_REGIONS = """-----BEGIN CERTIFICATE-----
 MIIC7TCCAq0CCQCWukjZ5V4aZzAJBgcqhkjOOAQDMFwxCzAJBgNVBAYTAlVTMRkw

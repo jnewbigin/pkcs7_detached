@@ -40,7 +40,7 @@ def __ascii_armor(payload: str, header: str) -> str:
 
         return "\n".join(lines)
     except IndexError:
-        raise ValidationError(f"Unable to ascii armor {header}")
+        raise ValidationError(f"Unable to ascii armor {header}") from None
 
 
 def verify_detached_signature(document: str, signature: str, certificate: str) -> bool:
