@@ -17,6 +17,12 @@ jobs:
         pip install
         -r requirements-dev.txt
         --user
+    - name: Run linter
+      run: scripts/lint.sh
+    - name: Run tests
+      run: scripts/test.sh
+    - name: Run mypy
+      run: scripts/mypy.sh
     - name: Build a binary wheel and a source tarball
       run: >-
         python -m
