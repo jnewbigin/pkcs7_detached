@@ -5,6 +5,10 @@ jobs:
   build-n-publish:
     name: Build and publish Python 🐍 distributions 📦 to PyPI and TestPyPI
     runs-on: ubuntu-18.04
+    strategy:
+      matrix:
+        #python: [3.6, 3.7, 3.8, 3.9]
+        script: [lint, test, mypy]
     steps:
     - uses: actions/checkout@master
     - name: Set up Python 3.8
@@ -17,12 +21,8 @@ jobs:
         pip install
         -r requirements-dev.txt
         --user
-    - name: Run linter
-      run: scripts/lint.sh
-    - name: Run tests
-      run: scripts/test.sh
-    - name: Run mypy
-      run: scripts/mypy.sh
+    - name: Run script ${{ matrix.script }}
+      run: scripts/${{ matrix.script }}.sh
     - name: Build a binary wheel and a source tarball
       run: >-
         python -m
