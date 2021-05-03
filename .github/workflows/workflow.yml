@@ -36,7 +36,7 @@ jobs:
     runs-on: ubuntu-18.04
     steps:
     - name: CI Complete
-    run: 'true'
+      run: 'true'
 
   cd:
     needs: ci-complete
