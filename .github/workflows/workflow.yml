@@ -1,4 +1,4 @@
-name: CI/CD Python 🐍 dpackage
+name: CI/CD Python Package
 on: push
 
 jobs:
@@ -31,9 +31,15 @@ jobs:
         --wheel
         --outdir dist/
         .
+  ci-complete:
+    needs: ci
+    runs-on: ubuntu-18.04
+    steps:
+    - name: CI Complete
+      run: 'true'
 
   cd:
-    needs: ci
+    needs: ci-complete
     name: CD to to PyPI and TestPyPI
     runs-on: ubuntu-18.04
     steps:
