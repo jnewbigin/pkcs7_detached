@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="pkcs7_detached",
-    version="0.0.3",
+    version="0.0.4",
     author="John Newbigin",
     author_email="jnewbigin@chrysocome.net",
     description="Validate PKCS7 detached signatures",

@@ -3,3 +3,4 @@ dist/**
 .eggs/**
 .cache/**
 build/**
+.mypy_cache/**
