@@ -9,7 +9,6 @@ jobs:
       matrix:
         python: [3.6, 3.7, 3.8, 3.9]
         script: [update-requirements]
-    strategy:
       fail-fast: False
     steps:
     - uses: actions/checkout@master
