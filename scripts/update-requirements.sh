@@ -15,4 +15,4 @@ git checkout -b "$BRANCH"
 scripts/requirements.sh
 git add requirements/*.txt
 git commit -m "Auto-update requirements"
-git push
+git push --set-upstream origin "$BRANCH"
