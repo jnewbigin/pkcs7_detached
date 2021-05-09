@@ -18,6 +18,10 @@ jobs:
         python-version: ${{ matrix.python }}
     - name: Run script
       run: scripts/${{ matrix.script }}.sh
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        REPOSITORY: ${{ github.repository }}
+
   requirements-complete:
     needs: requirements
     runs-on: ubuntu-18.04
