@@ -2,6 +2,7 @@
 set -euo pipefail
 
 PYTHON_VERSION="$(python3 -c 'import sys; print(f"{sys.version_info.major}.{sys.version_info.minor}")')"
+export PYTHON_VERSION
 echo "Building requirements for python $PYTHON_VERSION" >&2
 
 python3 -m pip install pip-tools --user --upgrade
