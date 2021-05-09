@@ -1,0 +1,27 @@
+name: Update requirements
+on: workflow_dispatch
+
+jobs:
+  requirements:
+    name: Update requirements
+    runs-on: ubuntu-18.04
+    strategy:
+      matrix:
+        python: [3.6, 3.7, 3.8, 3.9]
+        script: [update-requirements]
+      fail-fast: False
+    steps:
+    - uses: actions/checkout@master
+    - name: Set up Python ${{ matrix.python }}
+      uses: actions/setup-python@v1
+      with:
+        python-version: ${{ matrix.python }}
+    - name: Run script
+      run: scripts/${{ matrix.script }}.sh
+  requirements-complete:
+    needs: requirements
+    runs-on: ubuntu-18.04
+    steps:
+    - name: Requirements Complete
+      run: 'true'
+

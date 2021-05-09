@@ -1,0 +1,9 @@
+-r prod-${PYTHON_VERSION}.txt
+mock
+isort
+pytest
+black
+requests
+build
+pylint
+mypy
