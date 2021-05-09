@@ -19,6 +19,8 @@ jobs:
       run: scripts/install-requirements.sh
     - name: Run script ${{ matrix.script }}
       run: scripts/${{ matrix.script }}.sh
+      strategy:
+        fail-fast: False
     - name: Build a binary wheel and a source tarball
       run: >-
         python -m

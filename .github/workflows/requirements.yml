@@ -17,6 +17,8 @@ jobs:
         python-version: ${{ matrix.python }}
     - name: Run script
       run: scripts/${{ matrix.script }}.sh
+      strategy:
+        fail-fast: False
   requirements-complete:
     needs: requirements
     runs-on: ubuntu-18.04
