@@ -9,6 +9,8 @@ jobs:
       matrix:
         python: [3.6, 3.7, 3.8, 3.9]
         script: [update-requirements]
+    strategy:
+      fail-fast: False
     steps:
     - uses: actions/checkout@master
     - name: Set up Python ${{ matrix.python }}
@@ -17,8 +19,6 @@ jobs:
         python-version: ${{ matrix.python }}
     - name: Run script
       run: scripts/${{ matrix.script }}.sh
-      strategy:
-        fail-fast: False
   requirements-complete:
     needs: requirements
     runs-on: ubuntu-18.04

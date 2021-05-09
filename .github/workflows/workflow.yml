@@ -9,6 +9,8 @@ jobs:
       matrix:
         python: [3.6, 3.7, 3.8, 3.9]
         script: [lint, test, mypy]
+    strategy:
+      fail-fast: False
     steps:
     - uses: actions/checkout@master
     - name: Set up Python ${{ matrix.python }}
@@ -19,8 +21,6 @@ jobs:
       run: scripts/install-requirements.sh
     - name: Run script ${{ matrix.script }}
       run: scripts/${{ matrix.script }}.sh
-      strategy:
-        fail-fast: False
     - name: Build a binary wheel and a source tarball
       run: >-
         python -m
