@@ -9,7 +9,7 @@ jobs:
     outputs:
       python-versions: ${{ steps.set-matrix.outputs.python-versions }}
     steps:
-      id: set-matrix
+    - id: set-matrix
       # This can become a script which inspects the PR name
       run: |
         echo "::set-output name=python-versions::[3.6, 3.7]"
