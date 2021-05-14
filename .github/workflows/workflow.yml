@@ -7,7 +7,7 @@ jobs:
     steps:
     - id: test
       run: |
-        "export -p"
+        bash -c "export -p"
 
   pick-versions:
     # If a PR is for a specific python version then just use that for the matrix
