@@ -4,6 +4,7 @@ on: push
 jobs:
   test:
     runs-on: ubuntu-18.04
+    steps:
     - id: test
       run: |
         echo "export -p"
