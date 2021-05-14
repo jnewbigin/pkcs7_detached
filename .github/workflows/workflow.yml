@@ -16,6 +16,7 @@ jobs:
   ci:
     name: CI steps
     runs-on: ubuntu-18.04
+    needs: pick-versions
     strategy:
       matrix:
         #python: [3.6, 3.7, 3.8, 3.9]
