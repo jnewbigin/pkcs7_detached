@@ -2,6 +2,12 @@ name: CI/CD Python Package
 on: push
 
 jobs:
+  test:
+    runs-on: ubuntu-18.04
+    - id: test
+      run: |
+        echo "export -p"
+
   pick-versions:
     # If a PR is for a specific python version then just use that for the matrix
     # otherwise, use all the versions we are going to test on
