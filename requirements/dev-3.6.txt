@@ -10,7 +10,7 @@ astroid==2.5.6
     # via pylint
 attrs==21.2.0
     # via pytest
-black==21.5b0
+black==21.5b1
     # via -r requirements/dev.in
 build==0.3.1.post1
     # via -r requirements/dev.in
@@ -22,7 +22,7 @@ cffi==1.14.5
     #   cryptography
 chardet==4.0.0
     # via requests
-click==7.1.2
+click==8.0.0
     # via black
 cryptography==3.4.7
     # via -r requirements/prod-3.6.txt
