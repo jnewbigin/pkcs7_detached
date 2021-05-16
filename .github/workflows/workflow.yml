@@ -2,13 +2,6 @@ name: CI/CD Python Package
 on: push
 
 jobs:
-  test:
-    runs-on: ubuntu-18.04
-    steps:
-    - id: test
-      run: |
-        bash -c "export -p"
-
   pick-versions:
     # If a PR is for a specific python version then just use that for the matrix
     # otherwise, use all the versions we are going to test on
@@ -24,7 +17,6 @@ jobs:
     needs: pick-versions
     strategy:
       matrix:
-        #python: [3.6, 3.7, 3.8, 3.9]
         python: ${{fromJson(needs.pick-versions.outputs.python-versions)}}
         script: [lint, test, mypy]
       fail-fast: False
