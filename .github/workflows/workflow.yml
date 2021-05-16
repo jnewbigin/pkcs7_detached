@@ -2,12 +2,23 @@ name: CI/CD Python Package
 on: push
 
 jobs:
+  pick-versions:
+    # If a PR is for a specific python version then just use that for the matrix
+    # otherwise, use all the versions we are going to test on
+    runs-on: ubuntu-18.04
+    outputs:
+      python-versions: ${{ steps.set-matrix.outputs.python-versions }}
+    steps:
+    - uses: actions/checkout@master
+    - id: set-matrix
+      run: scripts/workflow-select-python.sh
   ci:
     name: CI steps
     runs-on: ubuntu-18.04
+    needs: pick-versions
     strategy:
       matrix:
-        python: [3.6, 3.7, 3.8, 3.9]
+        python: ${{fromJson(needs.pick-versions.outputs.python-versions)}}
         script: [lint, test, mypy]
       fail-fast: False
     steps:
