@@ -9,6 +9,7 @@ jobs:
     outputs:
       python-versions: ${{ steps.set-matrix.outputs.python-versions }}
     steps:
+    - uses: actions/checkout@master
     - id: set-matrix
       run: scripts/workflow-select-python.sh
   ci:
