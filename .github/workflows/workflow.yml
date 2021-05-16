@@ -17,9 +17,7 @@ jobs:
       python-versions: ${{ steps.set-matrix.outputs.python-versions }}
     steps:
     - id: set-matrix
-      # This can become a script which inspects the PR name
-      run: |
-        echo "::set-output name=python-versions::[3.6, 3.7]"
+      run: scripts/workflow-select-python.sh
   ci:
     name: CI steps
     runs-on: ubuntu-18.04
